@@ -84,7 +84,7 @@ class InstaClone extends Component {
         <View style={styles.iconBar}>
           <TouchableOpacity onPress={() => this.likeToggled()}>
             <Image
-              style={[styles.icon, { height: 40, width: 40 }]}
+              style={[styles.icon, { height: 45, width: 45 }]}
               source={heartIconColor}
             />
           </TouchableOpacity>
@@ -96,6 +96,14 @@ class InstaClone extends Component {
             style={[styles.icon, { height: 45, width: 40 }]}
             source={config.images.shareIcon}
           />
+        </View>
+
+        <View style={styles.commentBar}>
+          <Image
+            style={[styles.icon, { height: 20, width: 20 }]}
+            source={config.images.heartIconFilled}
+          />
+          <Text>128 Likes</Text>
         </View>
       </View>
     );
@@ -139,6 +147,17 @@ const styles = StyleSheet.create({
   },
 
   icon: {
+    marginLeft: 5
+  },
+
+  commentBar: {
+    height: config.styleConstants.rowHeight,
+    width: 100 + "%",
+    borderColor: "rgb(233,233,233)",
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    flexDirection: "row",
+    alignItems: 'center',
     marginLeft: 5
   }
 });
