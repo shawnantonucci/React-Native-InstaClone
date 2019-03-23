@@ -1,7 +1,19 @@
 import React, { Component } from "react";
 import { View, StyleSheet } from "react-native";
-import { MainFeed, Login, Camera, Profile } from './components/screens';
-import { createAppContainer, createSwitchNavigator, createBottomTabNavigator } from 'react-navigation';
+import {
+  MainFeed,
+  Login,
+  Camera,
+  Profile,
+  Register,
+  Home
+} from "./components/screens";
+import {
+  createAppContainer,
+  createSwitchNavigator,
+  createBottomTabNavigator,
+  createStackNavigator
+} from "react-navigation";
 
 const Tabs = createBottomTabNavigator({
   feed: MainFeed,
@@ -9,16 +21,22 @@ const Tabs = createBottomTabNavigator({
   profile: Profile
 });
 
-const MainStack = createSwitchNavigator({
+const IntroStack = createStackNavigator({
   login: Login,
+  register: Register
+});
+
+
+const MainNavigator = createSwitchNavigator({
+  intro: IntroStack,
   main: Tabs
 });
 
-const AppContainer = createAppContainer(MainStack);
+const AppContainer = createAppContainer(MainNavigator);
 
-class InstaClone extends Component{
-  render(){
-    return <AppContainer/>;
+class InstaClone extends Component {
+  render() {
+    return <AppContainer />;
   }
 }
 

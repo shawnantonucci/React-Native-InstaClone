@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 
-class Camera extends Component {
+class DashboardScreen extends Component {
   
   login = () => {
     //Navigate to Main app
@@ -20,10 +20,10 @@ class Camera extends Component {
         }}
         onPress={() => this.login()}
       >
-        <Text>CAMERA PAGE</Text>
+        <Text>FEATURE PROFILE PAGE</Text>
       </TouchableOpacity>
     );
   }
 }
 
-export default Camera;
+export default DashboardScreen;

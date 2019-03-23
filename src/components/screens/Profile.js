@@ -20,7 +20,7 @@ class Profile extends Component {
         }}
         onPress={() => this.login()}
       >
-        <Text>LOGIN PAGE</Text>
+        <Text>FEATURE PROFILE PAGE</Text>
       </TouchableOpacity>
     );
   }

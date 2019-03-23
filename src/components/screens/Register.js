@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, TextInput, Button } from "react-native";
 
-class Camera extends Component {
+class Register extends Component {
   
   login = () => {
     //Navigate to Main app
@@ -20,10 +20,10 @@ class Camera extends Component {
         }}
         onPress={() => this.login()}
       >
-        <Text>CAMERA PAGE</Text>
+        <Text>REGISTER PAGE</Text>
       </TouchableOpacity>
     );
   }
 }
 
-export default Camera;
+export default Register;
