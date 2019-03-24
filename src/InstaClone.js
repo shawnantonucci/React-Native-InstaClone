@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { View, StyleSheet } from "react-native";
+
 import {
   MainFeed,
   Login,
   Camera,
   Profile,
-  Register,
-  Home
+  Register
 } from "./components/screens";
 import {
   createAppContainer,

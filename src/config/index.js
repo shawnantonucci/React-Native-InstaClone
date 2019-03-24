@@ -8,5 +8,8 @@ export default {
     },
     styleConstants: {
         rowHeight: 50
-    }
+    },
+    
+    // baseUrl: "https://instagram_clone-yd8if7.turbo360-vertex.com/api/"
+    baseUrl: "http://10.0.2.2:3000/api/"
 }

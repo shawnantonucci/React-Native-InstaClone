@@ -1,29 +1,102 @@
+<script src="http://localhost:8097"></script>
+
 import React, { Component } from "react";
-import { View, Text, TouchableOpacity, TextInput, Button } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+  Button,
+  StyleSheet
+} from "react-native";
+import config from "../../config";
 
 class Register extends Component {
-  
-  login = () => {
-    //Navigate to Main app
-    this.props.navigation.navigate("main");
+  constructor() {
+    super();
+    this.state = {
+      credentials: {
+        email: "",
+        password: ""
+      }
+    };
+  }
+
+  updateText(text, field) {
+    let newCredentials = Object.assign(this.state.credentials);
+    newCredentials[field] = text;
+    this.setState({
+      credentials: newCredentials
+    });
+  }
+
+  register = () => {
+    // console.log(config.baseUrl)
+    fetch(config.baseUrl + "signup", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(this.state.credentials)
+    })
+    .then(resonse => resonse.json())
+    .then(jsonResponse => {
+      if(jsonResponse.confirmation === "success") {
+        this.props.navigation.navigate("main");
+      } else {
+        throw new Error({
+          message: "Sorry, something went wrong; Please try again"
+        });
+      }
+    })
+    .catch(err => {
+      console.log(err.message)
+    })
   };
 
   render() {
     return (
-      <TouchableOpacity
+      <View
         style={{
           height: 100 + "%",
           width: 100 + "%",
           flex: 1,
           justifyContent: "center",
-          alignItems: "center"
+          alignItems: "center",
+          backgroundColor: "rgb(252,61,57)"
         }}
-        onPress={() => this.login()}
       >
         <Text>REGISTER PAGE</Text>
-      </TouchableOpacity>
+        <TextInput
+          value={this.state.email}
+          placeholder="Email"
+          style={styles.input}
+          autoCorrect={false}
+          onChangeText={text => this.updateText(text, "email")}
+        />
+        <TextInput
+          value={this.state.password}
+          onChangeText={text => this.updateText(text, "password")}
+          secureTextEntry
+          autoCorrect={false}
+          placeholder="Password"
+          style={styles.input}
+        />
+        <Button onPress={() => this.register()} title="Signup" />
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  input: {
+    height: 50,
+    width: 65 + "%",
+    marginHorizontal: 50,
+    backgroundColor: "white",
+    marginBottom: 10
+  }
+});
 
 export default Register;
